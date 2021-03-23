@@ -4,6 +4,8 @@ from random import randint
 import os
 import json
 
+from Utils.generateGameBoard import generateGameBoard
+
 
 def main():
     g = Github(os.environ["GITHUB_TOKEN"])
@@ -17,7 +19,7 @@ def main():
     issueType = issueArguments[1]
 
     if issueType == "newgame":
-        newGame(issue,issueAuthor)
+        newGame(issue, issueAuthor)
 
 class createNewCurrentFile:
     def __init__(self, grid, score, bestScore, lastMoves):
@@ -52,15 +54,16 @@ def newGame(issue, issueAuthor):
         currentFile = json.dumps(currentFile.__dict__, indent=4, ensure_ascii=False) # Convert the object to json
         _current.write(currentFile)
 
+    # End
     issueText = "New game created!"
-    endAction(issue, issueAuthor, issueText)
+    endAction(grid, issue, issueAuthor, issueText)
 
 
-def endAction(issue, issueAuthor, issueText):
-    """"""
+def endAction(grid, issue, issueAuthor, issueText):
+    """End the bot action"""
+    generateGameBoard(grid)      
     issue.create_comment(f"{issueAuthor} {issueText}")
     issue.edit(state='closed')
-
 
 
 if __name__ == "__main__":
