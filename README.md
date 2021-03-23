@@ -8,10 +8,14 @@
 
 <!-- 2048 game actions -->
 
-[**New Gamme**](https://github.com/Darkempire78/readme-2048/issues/new?title=2048|newGame&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.)
+[**New Game**](https://github.com/Darkempire78/readme-2048/issues/new?title=2048|newGame&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.)
+
 [**Slide slide up**](https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideUp&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.)
+
 [**Slide to the down**](https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideDown&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.)
+
 [**Slide to the left**](https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideLeft&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.)
+
 [**Slide to the right**](https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideRight&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.)
 
 
