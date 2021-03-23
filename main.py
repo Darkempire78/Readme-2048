@@ -17,7 +17,7 @@ def main():
     issueType = issueArguments[1]
 
     if issueType == "newgame":
-        newGame()
+        newGame(issue,issueAuthor)
 
 class createNewCurrentFile:
     def __init__(self, grid, score, bestScore, lastMoves):
@@ -26,7 +26,7 @@ class createNewCurrentFile:
         self.bestScore = bestScore,
         self.lastMoves = lastMoves
 
-def newGame():
+def newGame(issue, issueAuthor):
     """Create a new 2048 game"""
 
     grid = [
@@ -52,9 +52,14 @@ def newGame():
         currentFile = json.dumps(currentFile.__dict__, indent=4, ensure_ascii=False) # Convert the object to json
         _current.write(currentFile)
 
-# 
+    issueText = "New game created!"
+    endAction(issue, issueAuthor, issueText)
 
-# issue.create_comment(f"{issueAuthor} --- {issueTitle} test!")
+
+def endAction(issue, issueAuthor, issueText):
+    """"""
+    issue.create_comment(f"{issueAuthor} {issueText}")
+    issue.edit(state='closed')
 
 
 
