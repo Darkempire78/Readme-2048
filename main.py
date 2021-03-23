@@ -10,7 +10,7 @@ def main():
     repo = g.get_repo(os.environ["GITHUB_REPOSITORY"])
     issue = repo.get_issue(number=int(os.environ["ISSUE_NUMBER"]))
 
-    issueTitle  = issue.title
+    issueTitle  = issue.title.lower()
     issueAuthor = "@" + issue.user.login
 
     issueArguments = issueTitle.split("|")
@@ -52,9 +52,9 @@ def newGame():
         currentFile = json.dumps(currentFile.__dict__, indent=4, ensure_ascii=False) # Convert the object to json
         _current.write(currentFile)
 
-    
+# 
 
-    # issue.create_comment(f"{issueAuthor} --- {issueTitle} test!")
+# issue.create_comment(f"{issueAuthor} --- {issueTitle} test!")
 
 
 
