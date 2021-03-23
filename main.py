@@ -11,8 +11,26 @@ def main():
     issueTitle  = issue.title
     issueAuthor = "@" + issue.user.login
 
-    print("test")
-    issue.create_comment(f"{issueAuthor} --- {issueTitle} test!")
+    issueArguments = issueTitle.split("|")
+    issueType = issueArguments[1]
+
+    if issueType == "newgame":
+        newGame()
+
+
+def newGame():
+    """Create a new 2048 game"""
+
+    grid = [
+            [None, None, None], 
+            [None, None, None], 
+            [None, None, None]
+        ]
+
+    
+    
+
+    # issue.create_comment(f"{issueAuthor} --- {issueTitle} test!")
 
 
 
