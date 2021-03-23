@@ -40,11 +40,12 @@ def newGame():
     gridCase = randint(0, 2)
     grid[gridLine][gridCase] = 2
 
-    # Write the current file
+    # Read the bestScore
     bestScore = 0
     with open("Data/bestScore.txt", "r") as _bestScore:
-        bestScore = int(_bestScore)
+        bestScore = int(_bestScore.read())
 
+    # Write the current file
     currentFile = createNewCurrentFile(grid, 0, bestScore, [])
 
     with open("Data/Games/current.json", "w") as _current:
