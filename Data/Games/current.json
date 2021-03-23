@@ -1,6 +1,28 @@
 {
-    "grid": [],
-    "score": 0,
-    "bestScore": 0,
+    "grid": [
+        [
+            [
+                null,
+                null,
+                null
+            ],
+            [
+                null,
+                null,
+                null
+            ],
+            [
+                null,
+                2,
+                null
+            ]
+        ]
+    ],
+    "score": [
+        0
+    ],
+    "bestScore": [
+        0
+    ],
     "lastMoves": []
 }
