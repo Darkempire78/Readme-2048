@@ -26,7 +26,7 @@ jobs:
           architecture: "x64"
 
       # Use pip to install the dependencies and then run the script
-      - name: Play chess
+      - name: Play 2048
         run: |
           pip install -r requirements.txt
           python main.py

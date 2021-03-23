@@ -42,7 +42,7 @@ def newGame():
 
     # Write the current file
     bestScore = 0
-    with open("Data/bestScore.json", "r") as _bestScore:
+    with open("Data/bestScore.txt", "r") as _bestScore:
         bestScore = int(_bestScore)
 
     currentFile = createNewCurrentFile(grid, 0, bestScore, [])
