@@ -1,11 +1,11 @@
-name: 2048fssd
+name: "2048"
 on:  
     issues:
         types: [opened]
 jobs:
     move:
         runs-on: ubuntu-latest
-        if: startsWith(github.event.issue.title, "2048|")
+        if: startsWith(github.event.issue.title, '2048|')
 
         steps:
 
