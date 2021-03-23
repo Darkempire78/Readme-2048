@@ -1,6 +1,6 @@
 <!-- ![](https://img.shields.io/codefactor/grade/github/Darkempire78/Github1s-Extension?style=for-the-badge) ![](https://img.shields.io/github/repo-size/Darkempire78/Github1s-Extension?style=for-the-badge) -->
 
-# 2048 Readme
+#  Readme 2048
 
 <!-- 2048 game board -->
 <img src="https://github.com/Darkempire78/readme-2048/blob/main/Data/gameboard.png" width="500"/>
