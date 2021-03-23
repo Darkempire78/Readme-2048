@@ -20,8 +20,8 @@ jobs:
           - name: "Setting up Python"
             uses: actions/setup-python@v2
             with:
-              python-version: "3.8"
-              architecture: "x64"
+                python-version: "3.8"
+                architecture: "x64"
 
             # Use pip to install the dependencies and then run the script
           - name: Play 2048
