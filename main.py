@@ -24,9 +24,9 @@ def main():
         slidLeft(issue, issueAuthor)
 
 class createNewCurrentFile:
-    def __init__(self, grid, score, bestScore, lastMoves):
+    def __init__(self, grid, bestScore, lastMoves):
         self.grid = grid,
-        self.score = score,
+        self.score = 0,
         self.bestScore = bestScore,
         self.lastMoves = lastMoves
 
@@ -51,7 +51,7 @@ def newGame(issue, issueAuthor):
         bestScore = int(_bestScore.read())
 
     # Write the current file
-    currentFile = createNewCurrentFile(grid, 0, bestScore, [])
+    currentFile = createNewCurrentFile(grid, bestScore, [])
 
     with open("Data/Games/current.json", "w") as _current:
         currentFile = json.dumps(currentFile.__dict__, indent=4, ensure_ascii=False) # Convert the object to json
