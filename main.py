@@ -66,7 +66,7 @@ def slidLeft(issue, issueAuthor):
     """Slide up the grid"""
     grid = getGrid()
 
-    changes = 0
+    changes = 1
     score = 0
     lastCase = False
     for line in range(4):
