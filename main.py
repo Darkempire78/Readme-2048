@@ -54,8 +54,8 @@ def newGame(issue, issueAuthor):
     currentFile = createNewCurrentFile(grid, bestScore, [])
 
     with open("Data/Games/current.json", "w") as _current:
-        currentFile = json.dumps(currentFile.__dict__, indent=4, ensure_ascii=False) # Convert the object to json
         print(currentFile.__dict__)
+        currentFile = json.dumps(currentFile.__dict__, indent=4, ensure_ascii=False) # Convert the object to json
         _current.write(currentFile)
 
     # End
