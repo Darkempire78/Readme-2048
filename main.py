@@ -55,6 +55,7 @@ def newGame(issue, issueAuthor):
 
     with open("Data/Games/current.json", "w") as _current:
         currentFile = json.dumps(currentFile.__dict__, indent=4, ensure_ascii=False) # Convert the object to json
+        print(currentFile.__dict__)
         _current.write(currentFile)
 
     # End
@@ -96,7 +97,6 @@ def endAction(grid, score, issue, issueAuthor, issueText):
     # Update current.json
     with open("Data/Games/current.json", "r") as _current:
         current = json.load(_current)
-        current["score"] = int(current["score"])
         current["score"] += score
         current["grid"] = grid
     with open("Data/Games/current.json", "w") as _current:
