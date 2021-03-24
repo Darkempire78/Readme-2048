@@ -32,14 +32,15 @@ def newGame(issue, issueAuthor):
     """Create a new 2048 game"""
 
     grid = [
-            [None, None, None], 
-            [None, None, None], 
-            [None, None, None]
+            [None, None, None, None], 
+            [None, None, None, None], 
+            [None, None, None, None],
+            [None, None, None, None]
         ]
     
     # Add random number
-    gridLine = randint(0, 2)
-    gridCase = randint(0, 2)
+    gridLine = randint(0, 3)
+    gridCase = randint(0, 3)
     grid[gridLine][gridCase] = 2
 
     # Read the bestScore
