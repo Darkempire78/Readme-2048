@@ -100,7 +100,7 @@ def endAction(grid, score, issue, issueAuthor, issueText):
         current["score"] += score
         current["grid"] = grid
     with open("Data/Games/current.json", "w") as _current:
-        currentFile = json.dumps(current.__dict__, indent=4, ensure_ascii=False) # Convert the object to json
+        currentFile = json.dumps(current, indent=4, ensure_ascii=False) # Convert the object to json
         _current.write(currentFile)
 
     # Reply and close the issue
