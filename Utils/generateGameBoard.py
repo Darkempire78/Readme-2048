@@ -9,7 +9,7 @@ def generateGameBoard(grid):
             if grid[line][case] != None:
                 coordinates = gridToCoordinates(line, case)
                 # Open the case image
-                block = Image.open(f"Assets/{grid[line][case]}.png")
+                block = Image.open(f"Assets/{grid[line][case]}.png").convert('RGBA')
                 # Past
                 gameboard.paste(block, coordinates, block)
     
@@ -26,11 +26,11 @@ def gridToCoordinates(line, case):
 
     return coordinates[line][case]
 
-grid = [
-            [2, None, 8, None], 
-            [None, None, None, None], 
-            [None, None, None, None],
-            [None, None, None, 2048]
-        ]
-generateGameBoard(grid)
+# grid = [
+#             [2, 8, 2048, None], 
+#             [None, None, None, None], 
+#             [None, None, None, None],
+#             [None, None, None, 4]
+#         ]
+# generateGameBoard(grid)
     

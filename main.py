@@ -20,6 +20,8 @@ def main():
 
     if issueType == "newgame":
         newGame(issue, issueAuthor)
+    elif issueType == "slideleft":
+        slidLeft(issue, issueAuthor)
 
 class createNewCurrentFile:
     def __init__(self, grid, score, bestScore, lastMoves):
@@ -57,17 +59,55 @@ def newGame(issue, issueAuthor):
 
     # End
     issueText = "New game created!"
-    endAction(grid, issue, issueAuthor, issueText)
+    endAction(grid, 0, issue, issueAuthor, issueText)
+
+def slidLeft(issue, issueAuthor):
+    """Slide up the grid"""
+    grid = getGrid()
+
+    score = 0
+    lastCase = False
+    for line in range(4):
+        for case in range(4):
+            if grid[line][case] is None:
+                lastCase = None
+            elif (lastCase is None) and (grid[line][case]):
+                grid[line][case-1] = grid[line][case]
+                grid[line][case] = None
+            elif (lastCase) and (grid[line][case]) and (lastCase == grid[line][case]):
+                score += grid[line][case]
+                grid[line][case-1] = grid[line][case] * 2
+                grid[line][case] = None
+                
+    issueText = "You slided to left!"
+    endAction(grid, score, issue, issueAuthor, issueText)
 
 
-def endAction(grid, issue, issueAuthor, issueText):
+def getGrid():
+    with open("Data/Games/current.json", "r") as _grid:
+        grid = _grid.read()
+        grid = json.load(grid)
+    return grid["grid"]
+
+def endAction(grid, score, issue, issueAuthor, issueText):
     """End the bot action"""
-    generateGameBoard(grid)      
+    generateGameBoard(grid)
+
+    # Update current.json
+    with open("Data/Games/current.json", "r") as _current:
+        current = _current.read()
+        current = json.load(current)
+        current["score"] += score
+        current["grid"] = grid
+    with open("Data/Games/current.json", "w") as _current:
+        currentFile = json.dumps(current.__dict__, indent=4, ensure_ascii=False) # Convert the object to json
+        _current.write(currentFile)
+
+    # Reply and close the issue
     issue.create_comment(f"{issueAuthor} {issueText}")
     issue.edit(state='closed')
 
-def test():
-    print(':(')
+
 
 if __name__ == "__main__":
 	main() 
