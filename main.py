@@ -96,9 +96,15 @@ def endAction(grid, score, issue, issueAuthor, issueText):
     # Update current.json
     with open("Data/Games/current.json", "r") as _current:
         current = json.load(_current)
-        current["score"] = int(current["score"][0])
+        try:
+            current["score"] = int(current["score"][0])
+        except:
+            pass
         current["score"] += score
-        current["bestScore"] = int(current["bestScore"][0])
+        try:
+            current["bestScore"] = int(current["bestScore"][0])
+        except:
+            pass
         current["grid"] = grid
     with open("Data/Games/current.json", "w") as _current:
         currentFile = json.dumps(current, indent=4, ensure_ascii=False) # Convert the object to json
