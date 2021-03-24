@@ -65,6 +65,8 @@ def endAction(grid, issue, issueAuthor, issueText):
     issue.create_comment(f"{issueAuthor} {issueText}")
     issue.edit(state='closed')
 
+def test():
+    print(':(')
 
 if __name__ == "__main__":
 	main() 
