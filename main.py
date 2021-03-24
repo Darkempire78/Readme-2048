@@ -97,6 +97,7 @@ def endAction(grid, score, issue, issueAuthor, issueText):
     # Update current.json
     with open("Data/Games/current.json", "r") as _current:
         current = json.load(_current)
+        current["score"] = int(current["score"][0])
         current["score"] += score
         current["grid"] = grid
     with open("Data/Games/current.json", "w") as _current:
