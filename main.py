@@ -75,7 +75,6 @@ def slidLeft(issue, issueAuthor):
             for case in range(4):
                 if grid[line][case] is None:
                     lastCase = None
-                    changes += 1
                 elif (lastCase is None) and (grid[line][case]):
                     grid[line][case-1] = grid[line][case]
                     grid[line][case] = None
