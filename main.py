@@ -171,10 +171,11 @@ def endAction(grid, score, issue, issueAuthor, issueText):
         currentFile = json.dumps(current, indent=4, ensure_ascii=False) # Convert the object to json
         _current.write(currentFile)
     
-    # Generate the new game board
-    generateGameBoard(grid)
     # Add a number in the grid
     addRandomNumber(grid)
+    # Generate the new game board
+    generateGameBoard(grid)
+    
 
     # Reply and close the issue
     issue.create_comment(f"{issueAuthor} {issueText}")
