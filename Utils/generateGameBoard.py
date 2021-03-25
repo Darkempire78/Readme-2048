@@ -20,7 +20,7 @@ def generateGameBoard(grid, score):
     draw = ImageDraw.Draw(gameboard)
     w, h = draw.textsize(message)
     W, H = (808, 165)
-    draw.text(((W-w)/2, (H, h)/2), message, (255,255,255))
+    draw.text(((W-w)/2, (H-h)/2), message, (255,255,255))
     # (599, 808), (91, 165)
     # Center => https://stackoverflow.com/questions/1970807/center-middle-align-text-with-pil
 
