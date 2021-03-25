@@ -4,28 +4,28 @@
             null,
             null,
             null,
-            2
-        ],
-        [
-            2,
-            null,
-            2,
-            8
+            null
         ],
         [
             null,
+            null,
             2,
-            4,
             2
         ],
         [
             null,
             null,
             null,
-            2
+            null
+        ],
+        [
+            null,
+            null,
+            null,
+            null
         ]
     ],
-    "score": 6,
+    "score": 0,
     "bestScore": 0,
     "lastMoves": []
 }
