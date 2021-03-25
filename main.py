@@ -174,7 +174,7 @@ def endAction(grid, score, issue, issueAuthor, issueText):
     # Add a number in the grid
     addRandomNumber(grid)
     # Generate the new game board
-    generateGameBoard(grid)
+    generateGameBoard(grid, current["score"])
     
 
     # Reply and close the issue

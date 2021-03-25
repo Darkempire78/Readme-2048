@@ -1,6 +1,6 @@
 from PIL import Image, ImageDraw, ImageFont
 
-def generateGameBoard(grid):   
+def generateGameBoard(grid, score):   
     
     gameboard = Image.open("Assets/background.png")
     
@@ -15,9 +15,12 @@ def generateGameBoard(grid):
                 gameboard.paste(block, coordinates, block)
     
     # Add score
-    myFont = ImageFont.truetype(font= "Utils/arial.ttf", size= 48)
+    message = str(score)
+    # myFont = ImageFont.truetype(font= "Utils/arial.ttf", size= 48)
     draw = ImageDraw.Draw(gameboard)
-    draw.text((599, 91), "123456789", (255,255,255))
+    w, h = draw.textsize(message)
+    W, H = (808, 165)
+    draw.text(((W-w)/2, (H, h)/2), message, (255,255,255))
     # (599, 808), (91, 165)
     # Center => https://stackoverflow.com/questions/1970807/center-middle-align-text-with-pil
 
