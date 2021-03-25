@@ -21,7 +21,8 @@ def main():
     if issueType == "newgame":
         newGame(issue, issueAuthor)
     elif issueType == "slideleft":
-        slidLeft(issue, issueAuthor)
+        pass
+        # slidLeft(issue, issueAuthor)
 
 class createNewCurrentFile:
     def __init__(self, grid, bestScore, lastMoves):
@@ -62,21 +63,21 @@ def newGame(issue, issueAuthor):
     issueText = "New game created!"
     endAction(grid, 0, issue, issueAuthor, issueText)
 
-def slidLeft(issue, issueAuthor):
+# def slidLeft(issue, issueAuthor):
+def slidLeft():
     """Slide up the grid"""
     grid = getGrid()
 
     changes = True
     score = 0
     lastCase = False
-    for line in range(4):
-        while changes:
-            changes = False
+
+    while changes:
+        changes = False
+        for line in range(4):
             for case in range(4):
-                if grid[line][case] is None:
-                    lastCase = None
-                    
-                elif (lastCase is None) and (grid[line][case]):
+
+                if (lastCase is None) and (grid[line][case]) and (case != 0):
                     grid[line][case-1] = grid[line][case]
                     grid[line][case] = None
                     changes = True
@@ -87,8 +88,10 @@ def slidLeft(issue, issueAuthor):
                     grid[line][case] = None
                     changes = True
                 
+                lastCase = grid[line][case]
+                
     issueText = "You slided to left!"
-    endAction(grid, score, issue, issueAuthor, issueText)
+    # endAction(grid, score, issue, issueAuthor, issueText)
 
 
 def getGrid():
@@ -124,4 +127,5 @@ def endAction(grid, score, issue, issueAuthor, issueText):
 
 
 if __name__ == "__main__":
-	main() 
+	# main()
+    slidLeft() 
