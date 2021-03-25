@@ -1,9 +1,10 @@
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 
 def generateGameBoard(grid):   
     
     gameboard = Image.open("Assets/background.png")
     
+    # Add numbers
     for line in range(4):
         for case in range(4):
             if grid[line][case] != None:
@@ -12,6 +13,12 @@ def generateGameBoard(grid):
                 block = Image.open(f"Assets/{grid[line][case]}.png").convert('RGBA')
                 # Past
                 gameboard.paste(block, coordinates, block)
+    
+    # Add score
+    font = ImageFont.truetype(font= "Utils/arial.ttf", size= 15)
+    draw = ImageDraw.Draw(gameboard)
+    draw.text((599, 808), (91, 165), "123456789", (255,255,255), font=font, align="center")
+
     
     gameboard.save("Data/gameboard.png")
 
