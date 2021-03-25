@@ -66,24 +66,26 @@ def slidLeft(issue, issueAuthor):
     """Slide up the grid"""
     grid = getGrid()
 
-    changes = 1
+    changes = True
     score = 0
     lastCase = False
     for line in range(4):
-        while changes > 0:
-            changes = 0
+        while changes:
+            changes = False
             for case in range(4):
                 if grid[line][case] is None:
                     lastCase = None
+                    
                 elif (lastCase is None) and (grid[line][case]):
                     grid[line][case-1] = grid[line][case]
                     grid[line][case] = None
-                    changes += 1
+                    changes = True
+
                 elif (lastCase) and (grid[line][case]) and (lastCase == grid[line][case]):
                     score += grid[line][case]
                     grid[line][case-1] = grid[line][case] * 2
                     grid[line][case] = None
-                    changes += 1
+                    changes = True
                 
     issueText = "You slided to left!"
     endAction(grid, score, issue, issueAuthor, issueText)
