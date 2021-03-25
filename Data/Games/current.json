@@ -7,10 +7,10 @@
             null
         ],
         [
+            8,
             null,
-            2,
-            2,
-            4
+            null,
+            null
         ],
         [
             null,
@@ -25,7 +25,7 @@
             null
         ]
     ],
-    "score": 0,
+    "score": 6,
     "bestScore": 0,
     "lastMoves": []
 }
