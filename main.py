@@ -86,7 +86,7 @@ def slideLeft(issue, issueAuthor):
                     changes = True
 
                 elif (lastCase) and (grid[line][case]) and (lastCase == grid[line][case]):
-                    score += grid[line][case]
+                    score += grid[line][case] * 2
                     grid[line][case-1] = grid[line][case] * 2
                     grid[line][case] = None
                     changes = True
@@ -116,7 +116,7 @@ def slideRight(issue, issueAuthor):
                     changes = True
 
                 elif (lastCase) and (grid[line][case]) and (lastCase == grid[line][case]):
-                    score += grid[line][case]
+                    score += grid[line][case] * 2
                     grid[line][case+1] = grid[line][case] * 2
                     grid[line][case] = None
                     changes = True
