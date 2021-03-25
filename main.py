@@ -21,8 +21,7 @@ def main():
     if issueType == "newgame":
         newGame(issue, issueAuthor)
     elif issueType == "slideleft":
-        pass
-        # slidLeft(issue, issueAuthor)
+        slidLeft(issue, issueAuthor)
 
 class createNewCurrentFile:
     def __init__(self, grid, bestScore, lastMoves):
@@ -63,9 +62,9 @@ def newGame(issue, issueAuthor):
     issueText = "New game created!"
     endAction(grid, 0, issue, issueAuthor, issueText)
 
-# def slidLeft(issue, issueAuthor):
-def slidLeft():
-    """Slide up the grid"""
+
+def slidLeft(issue, issueAuthor):
+    """Slide left the grid"""
     grid = getGrid()
 
     changes = True
@@ -91,8 +90,37 @@ def slidLeft():
                 lastCase = grid[line][case]
                 
     issueText = "You slided to left!"
-    # endAction(grid, score, issue, issueAuthor, issueText)
+    endAction(grid, score, issue, issueAuthor, issueText)
 
+
+def slidRight(issue, issueAuthor):
+    """Slide right the grid"""
+    grid = getGrid()
+
+    changes = True
+    score = 0
+    lastCase = False
+
+    while changes:
+        changes = False
+        for line in range(3,-1, -1):
+            for case in range(3,-1, -1):
+
+                if (lastCase is None) and (grid[line][case]) and (case != 3):
+                    grid[line][case+1] = grid[line][case]
+                    grid[line][case] = None
+                    changes = True
+
+                elif (lastCase) and (grid[line][case]) and (lastCase == grid[line][case]):
+                    score += grid[line][case]
+                    grid[line][case+1] = grid[line][case] * 2
+                    grid[line][case] = None
+                    changes = True
+                
+                lastCase = grid[line][case]
+                
+    issueText = "You slided to left!"
+    endAction(grid, score, issue, issueAuthor, issueText)
 
 def getGrid():
     with open("Data/Games/current.json", "r") as _grid:
@@ -127,5 +155,4 @@ def endAction(grid, score, issue, issueAuthor, issueText):
 
 
 if __name__ == "__main__":
-	# main()
-    slidLeft() 
+	main()
