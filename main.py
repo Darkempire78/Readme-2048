@@ -1,6 +1,6 @@
 from github import Github
 
-from random import randint
+from random import randint, choice
 import os
 import json
 
@@ -31,6 +31,8 @@ class createNewCurrentFile:
         self.score = 0,
         self.bestScore = bestScore,
         self.lastMoves = lastMoves
+
+# Actions
 
 def newGame(issue, issueAuthor):
     """Create a new 2048 game"""
@@ -124,16 +126,33 @@ def slideRight(issue, issueAuthor):
     issueText = "You slided to right!"
     endAction(grid, score, issue, issueAuthor, issueText)
 
+# Utils
 
 def getGrid():
     with open("Data/Games/current.json", "r") as _grid:
         grid = json.load(_grid)
     return grid["grid"]
 
+def addRandomNumber(grid):
+
+    availableCases = []
+
+    for line in range(4):
+        for case in range(4):
+            if grid[line][case] is None:
+                availableCases.append((line, case))
+
+    if availableCases:
+        line, case = choice(availableCases)
+        newCase = randint(1, 10)
+        newCase = 4 if newCase == 1 else 2
+        grid[line][case] = newCase
+    else:
+        print("You lost!")
+
 
 def endAction(grid, score, issue, issueAuthor, issueText):
     """End the bot action"""
-    generateGameBoard(grid)
 
     # Update current.json
     with open("Data/Games/current.json", "r") as _current:
@@ -151,6 +170,11 @@ def endAction(grid, score, issue, issueAuthor, issueText):
     with open("Data/Games/current.json", "w") as _current:
         currentFile = json.dumps(current, indent=4, ensure_ascii=False) # Convert the object to json
         _current.write(currentFile)
+    
+    # Generate the new game board
+    generateGameBoard(grid)
+    # Add a number in the grid
+    addRandomNumber(grid)
 
     # Reply and close the issue
     issue.create_comment(f"{issueAuthor} {issueText}")

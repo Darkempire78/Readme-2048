@@ -24,13 +24,4 @@ def gridToCoordinates(line, case):
         [(58, 1023), (300, 1023), (544, 1023), (786, 1023)]
     ]
 
-    return coordinates[line][case]
-
-# grid = [
-#             [2, 8, 2048, None], 
-#             [None, None, None, None], 
-#             [None, None, None, None],
-#             [None, None, None, 4]
-#         ]
-# generateGameBoard(grid)
-    
+    return coordinates[line][case]   
