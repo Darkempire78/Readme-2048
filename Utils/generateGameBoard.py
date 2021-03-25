@@ -15,10 +15,11 @@ def generateGameBoard(grid):
                 gameboard.paste(block, coordinates, block)
     
     # Add score
-    myFont = ImageFont.truetype(font= "Utils/arial.ttf", size= 16)
+    myFont = ImageFont.truetype(font= "Utils/arial.ttf", size= 48)
     draw = ImageDraw.Draw(gameboard)
     draw.text((599, 91), "123456789", (255,255,255))
     # (599, 808), (91, 165)
+    # Center => https://stackoverflow.com/questions/1970807/center-middle-align-text-with-pil
 
     
     gameboard.save("Data/gameboard.png")
