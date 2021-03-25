@@ -17,7 +17,7 @@ def generateGameBoard(grid):
     # Add score
     myFont = ImageFont.truetype(font= "Utils/arial.ttf", size= 16)
     draw = ImageDraw.Draw(gameboard)
-    draw.text(599, 91, "123456789", (255,255,255), font=myFont)
+    draw.text(599, 91, "123456789", (255,255,255))
     # (599, 808), (91, 165)
 
     
