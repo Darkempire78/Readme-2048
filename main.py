@@ -21,7 +21,9 @@ def main():
     if issueType == "newgame":
         newGame(issue, issueAuthor)
     elif issueType == "slideleft":
-        slidLeft(issue, issueAuthor)
+        slideLeft(issue, issueAuthor)
+    elif issueType == "slideright":
+        slideRight(issue, issueAuthor)
 
 class createNewCurrentFile:
     def __init__(self, grid, bestScore, lastMoves):
@@ -63,7 +65,7 @@ def newGame(issue, issueAuthor):
     endAction(grid, 0, issue, issueAuthor, issueText)
 
 
-def slidLeft(issue, issueAuthor):
+def slideLeft(issue, issueAuthor):
     """Slide left the grid"""
     grid = getGrid()
 
@@ -93,7 +95,7 @@ def slidLeft(issue, issueAuthor):
     endAction(grid, score, issue, issueAuthor, issueText)
 
 
-def slidRight(issue, issueAuthor):
+def slideRight(issue, issueAuthor):
     """Slide right the grid"""
     grid = getGrid()
 
@@ -119,13 +121,15 @@ def slidRight(issue, issueAuthor):
                 
                 lastCase = grid[line][case]
                 
-    issueText = "You slided to left!"
+    issueText = "You slided to right!"
     endAction(grid, score, issue, issueAuthor, issueText)
+
 
 def getGrid():
     with open("Data/Games/current.json", "r") as _grid:
         grid = json.load(_grid)
     return grid["grid"]
+
 
 def endAction(grid, score, issue, issueAuthor, issueText):
     """End the bot action"""
