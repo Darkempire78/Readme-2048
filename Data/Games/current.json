@@ -1,22 +1,22 @@
 {
     "grid": [
         [
-            2,
             null,
             null,
-            null
+            null,
+            2
         ],
         [
             2,
-            8,
             null,
-            null
+            2,
+            8
         ],
         [
+            null,
             2,
             4,
-            2,
-            null
+            2
         ],
         [
             null,
