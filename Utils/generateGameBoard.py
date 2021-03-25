@@ -15,9 +15,10 @@ def generateGameBoard(grid, score, bestScore):
                 gameboard.paste(block, coordinates, block)
     
     # Add the score
+    myFont = ImageFont.truetype(font= "Utils/arial.ttf", size= 60)
+
     scoreImage = Image.open(f"Assets/score.png").convert('RGBA')
     message = str(score)
-    myFont = ImageFont.truetype(font= "Utils/arial.ttf", size= 60)
     draw = ImageDraw.Draw(scoreImage)
     w, h = draw.textsize(message, font=myFont)
     W, H = scoreImage.size
@@ -25,14 +26,13 @@ def generateGameBoard(grid, score, bestScore):
     gameboard.paste(scoreImage, (599, 37), scoreImage)
 
     # Add the bestScore
-    scoreImage = Image.open(f"Assets/best.png").convert('RGBA')
+    bestScoreImage = Image.open(f"Assets/best.png").convert('RGBA')
     message = str(bestScore)
-    myFont = ImageFont.truetype(font= "Utils/arial.ttf", size= 60)
-    draw = ImageDraw.Draw(scoreImage)
+    draw = ImageDraw.Draw(bestScoreImage)
     w, h = draw.textsize(message, font=myFont)
-    W, H = scoreImage.size
+    W, H = bestScoreImage.size
     draw.text(((W-w)/2, (H-h+40)/2), message, (255,255,255), font=myFont)
-    gameboard.paste(scoreImage, (820, 37), scoreImage)
+    gameboard.paste(bestScoreImage, (820, 37), bestScoreImage)
     
     # (599, 808), (91, 165)
     # Center => https://stackoverflow.com/questions/1970807/center-middle-align-text-with-pil
