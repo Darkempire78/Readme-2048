@@ -2,7 +2,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 def generateGameBoard(grid, score):   
     
-    gameboard = Image.open("Assets/background.png")
+    gameboard = Image.open("Assets/background.png").convert('RGBA')
     
     # Add numbers
     for line in range(4):
