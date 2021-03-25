@@ -154,7 +154,7 @@ def addRandomNumber(grid):
 def endAction(grid, score, issue, issueAuthor, issueText):
     """End the bot action"""
 
-    # Update current.json
+    # Read current.json
     with open("Data/Games/current.json", "r") as _current:
         current = json.load(_current)
         try:
@@ -167,15 +167,16 @@ def endAction(grid, score, issue, issueAuthor, issueText):
         except:
             pass
         current["grid"] = grid
-    with open("Data/Games/current.json", "w") as _current:
-        currentFile = json.dumps(current, indent=4, ensure_ascii=False) # Convert the object to json
-        _current.write(currentFile)
     
     # Add a number in the grid
     addRandomNumber(grid)
     # Generate the new game board
     generateGameBoard(grid, current["score"], current["bestScore"])
     
+    # Update current.json
+    with open("Data/Games/current.json", "w") as _current:
+        currentFile = json.dumps(current, indent=4, ensure_ascii=False) # Convert the object to json
+        _current.write(currentFile)
 
     # Reply and close the issue
     issue.create_comment(f"{issueAuthor} {issueText}")
