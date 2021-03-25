@@ -21,7 +21,7 @@ def generateGameBoard(grid, score, bestScore):
     draw = ImageDraw.Draw(scoreImage)
     w, h = draw.textsize(message, font=myFont)
     W, H = scoreImage.size
-    draw.text(((W-w)/2, (H-h+50)/2), message, (255,255,255), font=myFont)
+    draw.text(((W-w)/2, (H-h+40)/2), message, (255,255,255), font=myFont)
     gameboard.paste(scoreImage, (599, 37), scoreImage)
 
     # Add the bestScore
@@ -31,7 +31,7 @@ def generateGameBoard(grid, score, bestScore):
     draw = ImageDraw.Draw(scoreImage)
     w, h = draw.textsize(message, font=myFont)
     W, H = scoreImage.size
-    draw.text(((W-w)/2, (H-h+50)/2), message, (255,255,255), font=myFont)
+    draw.text(((W-w)/2, (H-h+40)/2), message, (255,255,255), font=myFont)
     gameboard.paste(scoreImage, (820, 37), scoreImage)
     
     # (599, 808), (91, 165)
