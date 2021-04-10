@@ -43,13 +43,15 @@ class createNewCurrentFile:
 
 def newGame(issue, issueAuthor):
     """Create a new 2048 game"""
+    try:
+        # Archive the former game    
+        date = datetime.datetime.now().strftime("%m %d %y")
+        os.mkdir(f"Data/Games/{date}")
+        os.rename("Data/Games/current.json", f"Data/Games/{date}/game.json")
+        os.rename("Data/gameboard.png", f"Data/Games/{date}/gameboard.png")
+    except:
+        pass
     
-    # Archive the former game    
-    date = datetime.datetime.now().strftime("%m %d %y")
-    os.mkdir(f"Data/Games/{date}")
-    os.rename("Data/Games/current.json", f"Data/Games/{date}/game.json")
-    os.rename("Data/gameboard.png", f"Data/Games/{date}/gameboard.png")
-
     grid = [
             [None, None, None, None], 
             [None, None, None, None], 
