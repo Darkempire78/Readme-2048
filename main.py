@@ -51,7 +51,7 @@ def newGame(issue, issueAuthor):
         os.rename("Data/gameboard.png", f"Data/Games/{date}/gameboard.png")
     except:
         pass
-    
+
     grid = [
             [None, None, None, None], 
             [None, None, None, None], 
@@ -249,7 +249,7 @@ def endAction(grid, score, issue, issueAuthor, issueText):
         current["grid"] = grid
 
     # Check if the game is ended
-    if None in grid:
+    if any(x is None for x in grid):
         # Add a number in the grid
         addRandomNumber(grid)
         # Generate the new game board
