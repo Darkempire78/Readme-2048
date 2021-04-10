@@ -24,6 +24,8 @@ def main():
         slideLeft(issue, issueAuthor)
     elif issueType == "slideright":
         slideRight(issue, issueAuthor)
+    elif issueType == "slideup":
+        slideUp(issue, issueAuthor)
 
 class createNewCurrentFile:
     def __init__(self, grid, bestScore, lastMoves):
@@ -66,6 +68,7 @@ def newGame(issue, issueAuthor):
     issueText = "New game created!"
     endAction(grid, 0, issue, issueAuthor, issueText)
 
+# Slide
 
 def slideLeft(issue, issueAuthor):
     """Slide left the grid"""
@@ -96,7 +99,6 @@ def slideLeft(issue, issueAuthor):
     issueText = "You slided to left!"
     endAction(grid, score, issue, issueAuthor, issueText)
 
-
 def slideRight(issue, issueAuthor):
     """Slide right the grid"""
     grid = getGrid()
@@ -126,6 +128,35 @@ def slideRight(issue, issueAuthor):
     issueText = "You slided to right!"
     endAction(grid, score, issue, issueAuthor, issueText)
 
+def slideUp(issue, issueAuthor):
+    """Slide up the grid"""
+    grid = getGrid()
+
+    changes = True
+    score = 0
+    lastCase = False
+
+    while changes:
+        changes = False
+        for case in range(4):
+            for line in range(4):
+
+                if (lastCase is None) and (grid[line][case]) and (case != 0):
+                    grid[line][case-1] = grid[line][case]
+                    grid[line][case] = None
+                    changes = True
+
+                elif (lastCase) and (grid[line][case]) and (lastCase == grid[line][case]):
+                    score += grid[line][case] * 2
+                    grid[line][case-1] = grid[line][case] * 2
+                    grid[line][case] = None
+                    changes = True
+                
+                lastCase = grid[line][case]
+                
+    issueText = "You slided up!"
+    endAction(grid, score, issue, issueAuthor, issueText)
+
 # Utils
 
 def getGrid():
@@ -151,6 +182,7 @@ def addRandomNumber(grid):
         print("You lost!")
 
 
+# End
 def endAction(grid, score, issue, issueAuthor, issueText):
     """End the bot action"""
 
