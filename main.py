@@ -26,6 +26,10 @@ def main():
         slideRight(issue, issueAuthor)
     elif issueType == "slideup":
         slideUp(issue, issueAuthor)
+    elif issueType == "slidedown":
+        slideDown(issue, issueAuthor)
+    else:
+        print("This action does not exist")
 
 class createNewCurrentFile:
     def __init__(self, grid, bestScore, lastMoves):
@@ -128,6 +132,7 @@ def slideRight(issue, issueAuthor):
     issueText = "You slided to right!"
     endAction(grid, score, issue, issueAuthor, issueText)
 
+
 def slideUp(issue, issueAuthor):
     """Slide up the grid"""
     grid = getGrid()
@@ -141,14 +146,43 @@ def slideUp(issue, issueAuthor):
         for case in range(4):
             for line in range(4):
 
-                if (lastCase is None) and (grid[line][case]) and (case != 0):
-                    grid[line][case-1] = grid[line][case]
+                if (lastCase is None) and (grid[line][case]) and (line != 0):
+                    grid[line-1][case] = grid[line][case]
                     grid[line][case] = None
                     changes = True
 
                 elif (lastCase) and (grid[line][case]) and (lastCase == grid[line][case]):
                     score += grid[line][case] * 2
-                    grid[line][case-1] = grid[line][case] * 2
+                    grid[line-1][case] = grid[line][case] * 2
+                    grid[line][case] = None
+                    changes = True
+                
+                lastCase = grid[line][case]
+                
+    issueText = "You slided up!"
+    endAction(grid, score, issue, issueAuthor, issueText)
+
+def slideDown(issue, issueAuthor):
+    """Slide up the grid"""
+    grid = getGrid()
+
+    changes = True
+    score = 0
+    lastCase = False
+
+    while changes:
+        changes = False
+        for case in range(3, -1, -1):
+            for line in range(3, -1, -1):
+
+                if (lastCase is None) and (grid[line][case]) and (line != 3):
+                    grid[line+1][case] = grid[line][case]
+                    grid[line][case] = None
+                    changes = True
+
+                elif (lastCase) and (grid[line][case]) and (lastCase == grid[line][case]):
+                    score += grid[line][case] * 2
+                    grid[line+1][case] = grid[line][case] * 2
                     grid[line][case] = None
                     changes = True
                 
@@ -217,4 +251,6 @@ def endAction(grid, score, issue, issueAuthor, issueText):
 
 
 if __name__ == "__main__":
-	main()
+	# main()
+    # slideUp()
+    slideDown()
