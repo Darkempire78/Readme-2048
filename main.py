@@ -3,8 +3,9 @@ from github import Github
 from random import randint, choice
 import os
 import json
+import datetime
 
-from Utils.generateGameBoard import generateGameBoard
+from Utils.generateGameBoard import generateGameBoard, generateEndGameBoard
 
 
 def main():
@@ -100,7 +101,7 @@ def slideLeft(issue, issueAuthor):
                 
                 lastCase = grid[line][case]
                 
-    issueText = "You slided to left!"
+    issueText = "You slided left!"
     endAction(grid, score, issue, issueAuthor, issueText)
 
 def slideRight(issue, issueAuthor):
@@ -129,7 +130,7 @@ def slideRight(issue, issueAuthor):
                 
                 lastCase = grid[line][case]
                 
-    issueText = "You slided to right!"
+    issueText = "You slided right!"
     endAction(grid, score, issue, issueAuthor, issueText)
 
 
@@ -163,7 +164,7 @@ def slideUp(issue, issueAuthor):
     endAction(grid, score, issue, issueAuthor, issueText)
 
 def slideDown(issue, issueAuthor):
-    """Slide up the grid"""
+    """Slide down the grid"""
     grid = getGrid()
 
     changes = True
@@ -188,7 +189,7 @@ def slideDown(issue, issueAuthor):
                 
                 lastCase = grid[line][case]
                 
-    issueText = "You slided up!"
+    issueText = "You slided down!"
     endAction(grid, score, issue, issueAuthor, issueText)
 
 # Utils
@@ -215,6 +216,11 @@ def addRandomNumber(grid):
     else:
         print("You lost!")
 
+# def checkNextActions(grid):
+
+#     # Check
+#     for line in range(4):
+        
 
 # End
 def endAction(grid, score, issue, issueAuthor, issueText):
@@ -233,21 +239,41 @@ def endAction(grid, score, issue, issueAuthor, issueText):
         except:
             pass
         current["grid"] = grid
-    
-    # Add a number in the grid
-    addRandomNumber(grid)
-    # Generate the new game board
-    generateGameBoard(grid, current["score"], current["bestScore"])
-    
-    # Update current.json
-    with open("Data/Games/current.json", "w") as _current:
-        currentFile = json.dumps(current, indent=4, ensure_ascii=False) # Convert the object to json
-        _current.write(currentFile)
 
-    # Reply and close the issue
-    issue.create_comment(f"{issueAuthor} {issueText}")
-    issue.edit(state='closed')
+    # Check if the game is ended
+    if None in grid:
+        # Add a number in the grid
+        addRandomNumber(grid)
+        # Generate the new game board
+        generateGameBoard(grid, current["score"], current["bestScore"])
+        
+        # Update current.json
+        with open("Data/Games/current.json", "w") as _current:
+            currentFile = json.dumps(current, indent=4, ensure_ascii=False) # Convert the object to json
+            _current.write(currentFile)
 
+        # Check next actions (what action we can do)
+        # checkNextActions(grid)
+
+        # Reply and close the issue
+        issue.create_comment(f"{issueAuthor} {issueText}")
+        issue.edit(state='closed')
+
+    # Game ended
+    else:
+        # Update current.json
+        with open("Data/Games/current.json", "w") as _current:
+            currentFile = json.dumps(current, indent=4, ensure_ascii=False) # Convert the object to json
+            _current.write(currentFile)
+
+        # Archive the game    
+        date = datetime.datetime.now().strftime("%x")
+        os.mkdir(date)
+        os.rename("Data/Games/current.json", f"Data/Games/{date}/game.json")
+        os.rename("Data/gameboard.png", f"Data/Games/{date}/gameboard.png")
+
+        # Generate end gameboard
+        generateEndGameBoard(grid, current["score"], current["bestScore"])
 
 
 if __name__ == "__main__":

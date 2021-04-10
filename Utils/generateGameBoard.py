@@ -1,4 +1,4 @@
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 def generateGameBoard(grid, score, bestScore):   
     
@@ -40,6 +40,14 @@ def generateGameBoard(grid, score, bestScore):
     
     gameboard.save("Data/gameboard.png")
 
+def generateEndGameBoard(grid, score, bestScore):
+    
+    generateGameBoard(grid, score, bestScore)
+    gameboard = Image.open("Assets/background.png").convert('RGBA')
+
+    # Add the blurred filter
+    gameboard = gameboard.filter(ImageFilter.BLUR)
+    gameboard.save("Data/gameboard.png")
 
 def gridToCoordinates(line, case):
     coordinates = [
