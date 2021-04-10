@@ -267,8 +267,8 @@ def endAction(grid, score, issue, issueAuthor, issueText):
             _current.write(currentFile)
 
         # Archive the game    
-        date = datetime.datetime.now().strftime("%x")
-        os.mkdir(date)
+        date = datetime.datetime.now().strftime("%m %d %y")
+        os.mkdir(f"Data/Games/{date}")
         os.rename("Data/Games/current.json", f"Data/Games/{date}/game.json")
         os.rename("Data/gameboard.png", f"Data/Games/{date}/gameboard.png")
 
