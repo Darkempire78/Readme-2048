@@ -249,7 +249,7 @@ def endAction(grid, score, issue, issueAuthor, issueText):
         current["grid"] = grid
 
     # Check if the game is ended
-    if any(x is None for x in grid):
+    if any(y is None for y in (x for x in grid)):
         # Add a number in the grid
         addRandomNumber(grid)
         # Generate the new game board
