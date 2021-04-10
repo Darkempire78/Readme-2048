@@ -251,6 +251,4 @@ def endAction(grid, score, issue, issueAuthor, issueText):
 
 
 if __name__ == "__main__":
-	# main()
-    # slideUp()
-    slideDown()
+	main()
