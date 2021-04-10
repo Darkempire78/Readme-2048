@@ -7,25 +7,25 @@
             null
         ],
         [
-            null,
+            2,
             2,
             null,
             null
         ],
         [
-            null,
-            null,
             8,
-            4
+            4,
+            null,
+            null
         ],
         [
             8,
-            2,
-            2,
-            8
+            4,
+            8,
+            null
         ]
     ],
-    "score": 38,
+    "score": 42,
     "bestScore": 0,
     "lastMoves": []
 }
