@@ -1,31 +1,31 @@
 {
     "grid": [
         [
-            8,
+            null,
+            null,
+            null,
+            null
+        ],
+        [
+            null,
             2,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
             8,
             4
         ],
         [
-            null,
-            null,
+            8,
             2,
-            4
-        ],
-        [
-            null,
-            null,
-            null,
-            2
-        ],
-        [
-            null,
-            null,
-            null,
-            2
+            2,
+            8
         ]
     ],
-    "score": 26,
+    "score": 38,
     "bestScore": 0,
     "lastMoves": []
 }
