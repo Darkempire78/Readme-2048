@@ -55,9 +55,9 @@ def newGame(issue, issueAuthor):
     current = json.load(currentFile)
     currentFile.close()
 
-    if bestScore < current["bestScore"]:
+    if bestScore < current["score"]:
         with open("Data/bestScore.txt", "w") as _bestScoreFile:
-            _bestScoreFile.write(current["bestScore"])
+            _bestScoreFile.write(current["score"])
 
     # Archive the former game    
     date = datetime.datetime.now().strftime("%m-%d-%Y %H-%M")
