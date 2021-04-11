@@ -36,14 +36,13 @@ def generateGameBoard(grid, score, bestScore):
     
     # (599, 808), (91, 165)
     # Center => https://stackoverflow.com/questions/1970807/center-middle-align-text-with-pil
-
     
     gameboard.save("Data/gameboard.png")
 
 def generateEndGameBoard(grid, score, bestScore):
     
     generateGameBoard(grid, score, bestScore)
-    gameboard = Image.open("Assets/background.png").convert('RGBA')
+    gameboard = Image.open("Assets/gameboard.png").convert('RGBA')
 
     # Add the blurred filter
     gameboard = gameboard.filter(ImageFilter.BLUR)

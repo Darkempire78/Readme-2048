@@ -279,10 +279,6 @@ def endAction(grid, score, issue, issueAuthor, issueText):
 
     # Game ended
     else:
-        
-        with open("Data/Games/current.json", "r") as _current:
-            grid = json.load(_current)["grid"]
-        
         # Update current.json
         with open("Data/Games/current.json", "w") as _current:
             currentFile = json.dumps(current, indent=4, ensure_ascii=False) # Convert the object to json
