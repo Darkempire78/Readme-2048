@@ -30,7 +30,9 @@ def main():
     elif issueType == "slidedown":
         slideDown(issue, issueAuthor)
     else:
-        print("This action does not exist")
+        # Reply and close the issue
+        issue.create_comment(f"{issueAuthor} This action does not exist!")
+        issue.edit(state='closed')
 
 class createNewCurrentFile:
     def __init__(self, grid, bestScore, lastMoves):
@@ -58,7 +60,7 @@ def newGame(issue, issueAuthor):
             _bestScoreFile.write(current["bestScore"])
 
     # Archive the former game    
-    date = datetime.datetime.now().strftime("%m-%d-%Y")
+    date = datetime.datetime.now().strftime("%m-%d-%Y %H-%M")
     os.mkdir(f"Data/Games/{date}")
     os.rename("Data/Games/current.json", f"Data/Games/{date}/game.json")
     os.rename("Data/gameboard.png", f"Data/Games/{date}/gameboard.png")
