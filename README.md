@@ -10,7 +10,6 @@
 
 ## To do
 - [ ] Remove impossible actions
-- [ ] Notify every player when the game ended
 - [ ] Do not download Pillow each time 
 - [ ] Ranking of the number of actions played
 - [ ] Prevent from runing twice actions at the same time (https://github.community/t/wait-a-workflow-to-finish-before-running-another-workflow/17095/2)
