@@ -334,7 +334,7 @@ def endAction(grid, score, issue, issueAuthor, issueText, isNewGame):
             _current.write(currentFile)
 
         # Reply and close the issue
-        issue.create_comment(f"{issueAuthor} {issueText}")
+        issue.create_comment(f"{issueAuthor} {issueText}\n\nAsk a friend to do the next action: [Share on Twitter...](https://twitter.com/intent/tweet?text=I'm playing 2048 on a GitHub Profile Readme! I just played. You have the action at https://github.com/Darkempire78/Darkempire78)")
         issue.edit(state='closed')
 
     # Game ended
