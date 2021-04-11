@@ -291,7 +291,7 @@ def endAction(grid, score, issue, issueAuthor, issueText):
         readme =  open("README.md", "r")
         readme = readme.split("<!-- 2048GameActions -->", 2)
 
-        readme[1] = "<img src=\"Assets/newGame.png\" href=\"https://github.com/Darkempire78/readme-2048/issues/new?title=2048|newGame&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.\"/>"
+        readme[1] = "<a  href=\"https://github.com/Darkempire78/readme-2048/issues/new?title=2048|newGame&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.\"><img src=\"Assets/newGame.png\"/></a>"
 
         with open("README.md", "w") as _readme:
             _readme.write("<!-- 2048GameActions -->".join(readme))
