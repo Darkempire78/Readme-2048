@@ -46,6 +46,7 @@ def generateEndGameBoard(grid, score, bestScore):
 
     # Add the blurred filter
     gameboard = gameboard.filter(ImageFilter.BLUR)
+    gameboard = gameboard.filter(ImageFilter.BLUR)
 
     # Add "game over!"
     gameOver = Image.open(f"Assets/gameOver.png").convert('RGBA')
