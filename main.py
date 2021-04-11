@@ -43,14 +43,27 @@ class createNewCurrentFile:
 
 def newGame(issue, issueAuthor):
     """Create a new 2048 game"""
-    try:
-        # Archive the former game    
-        date = datetime.datetime.now().strftime("%m %d %y")
-        os.mkdir(f"Data/Games/{date}")
-        os.rename("Data/Games/current.json", f"Data/Games/{date}/game.json")
-        os.rename("Data/gameboard.png", f"Data/Games/{date}/gameboard.png")
-    except:
-        pass
+    
+    # Set the best score
+    bestScoreFile =  open("Data/bestScore.txt", "r")
+    bestScore = int(bestScoreFile.read())
+    bestScoreFile.close()
+
+    currentFile = open("Data/Games/current.json", "r")
+    current = json.load(currentFile)
+    currentFile.close()
+
+    if bestScore < current["bestScore"]:
+        with open("Data/bestScore.txt", "w") as _bestScoreFile:
+            _bestScoreFile.write(current["bestScore"])
+
+    # Archive the former game    
+    date = datetime.datetime.now().strftime("%m-%d-%Y")
+    os.mkdir(f"Data/Games/{date}")
+    os.rename("Data/Games/current.json", f"Data/Games/{date}/game.json")
+    os.rename("Data/gameboard.png", f"Data/Games/{date}/gameboard.png")
+    
+    
 
     # Change the actions
     readme =  open("README.md", "r")
