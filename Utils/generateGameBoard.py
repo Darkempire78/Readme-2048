@@ -42,7 +42,7 @@ def generateGameBoard(grid, score, bestScore):
 def generateEndGameBoard(grid, score, bestScore):
     
     generateGameBoard(grid, score, bestScore)
-    gameboard = Image.open("Assets/gameboard.png").convert('RGBA')
+    gameboard = Image.open("Data/gameboard.png").convert('RGBA')
 
     # Add the blurred filter
     gameboard = gameboard.filter(ImageFilter.BLUR)
