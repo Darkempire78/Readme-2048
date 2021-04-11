@@ -293,6 +293,11 @@ def checkNextActions(grid):
 def endAction(grid, score, issue, issueAuthor, issueText, isNewGame):
     """End the bot action"""
 
+    if any(None in line for line in grid): 
+        # Add a number in the grid
+        if not isNewGame:
+            addRandomNumber(grid)
+
     # Read current.json
     with open("Data/Games/current.json", "r") as _current:
         current = json.load(_current)
@@ -308,10 +313,7 @@ def endAction(grid, score, issue, issueAuthor, issueText, isNewGame):
         current["grid"] = grid
 
     # Check if the game is ended
-    if not checkNextActions(grid):
-        # Add a number in the grid
-        if not isNewGame:
-            addRandomNumber(grid)
+    if checkNextActions(grid):
         # Generate the new game board
         generateGameBoard(grid, current["score"], current["bestScore"])
         
@@ -347,4 +349,4 @@ def endAction(grid, score, issue, issueAuthor, issueText, isNewGame):
 
 
 if __name__ == "__main__":
-	main()
+	checkNextActions(getGrid())
