@@ -2,30 +2,30 @@
     "grid": [
         [
             2,
-            null,
-            null,
-            null
+            4,
+            8,
+            16
         ],
         [
-            null,
-            null,
-            null,
-            null
+            32,
+            64,
+            128,
+            256
         ],
         [
-            null,
-            null,
-            null,
-            null
+            2,
+            4,
+            8,
+            16
         ],
         [
-            null,
-            null,
-            null,
-            null
+            32,
+            64,
+            128,
+            2
         ]
     ],
-    "score": 0,
+    "score": 100,
     "bestScore": 0,
     "lastMoves": []
 }
