@@ -7,7 +7,7 @@ def generateGameBoard(grid, score, bestScore):
     # Add numbers
     for line in range(4):
         for case in range(4):
-            if grid[line][case] != None:
+            if grid[line][case] is not None:
                 coordinates = gridToCoordinates(line, case)
                 # Open the case image
                 block = Image.open(f"Assets/{grid[line][case]}.png").convert('RGBA')
