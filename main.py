@@ -311,6 +311,7 @@ def endAction(grid, score, issue, issueAuthor, issueText, isNewGame):
         except:
             pass
         current["grid"] = grid
+        current["lastMoves"].append(issueAuthor)
 
     # Check if the game is ended
     if checkNextActions(grid):
