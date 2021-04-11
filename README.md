@@ -10,8 +10,6 @@
 
 ## To do
 - [ ] Remove impossible actions
-- [ ] Save players
-- [ ] Prevent from playing twice in a row
 - [ ] Notify every player when the game ended
 - [ ] Do not download Pillow each time 
 - [ ] Ranking of the number of actions played
