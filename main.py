@@ -19,6 +19,16 @@ def main():
     issueArguments = issueTitle.split("|")
     issueType = issueArguments[1]
 
+    # Prevent from playing twice in a row
+    currentFile = open("Data/Games/current.json", "r")
+    current = json.load(currentFile)
+    currentFile.close()
+    if current["moves"][-1] == issueAuthor:
+        # Reply and close the issue
+        issue.create_comment(f"{issueAuthor} You cannot play two times in a row!")
+        issue.edit(state='closed')
+        return
+
     if issueType == "newgame":
         newGame(issue, issueAuthor)
     elif issueType == "slideleft":
@@ -35,11 +45,11 @@ def main():
         issue.edit(state='closed')
 
 class createNewCurrentFile:
-    def __init__(self, grid, bestScore, lastMoves):
+    def __init__(self, grid, bestScore, moves):
         self.grid = grid,
         self.score = 0,
         self.bestScore = bestScore,
-        self.lastMoves = lastMoves
+        self.moves = moves
 
 # Actions
 
@@ -311,7 +321,7 @@ def endAction(grid, score, issue, issueAuthor, issueText, isNewGame):
         except:
             pass
         current["grid"] = grid
-        current["lastMoves"].append(issueAuthor)
+        current["moves"].append(issueAuthor)
 
     # Check if the game is ended
     if checkNextActions(grid):
