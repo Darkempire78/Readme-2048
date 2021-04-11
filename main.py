@@ -279,6 +279,10 @@ def endAction(grid, score, issue, issueAuthor, issueText):
 
     # Game ended
     else:
+        
+        with open("Data/Games/current.json", "r") as _current:
+            grid = json.load(_current)["grid"]
+        
         # Update current.json
         with open("Data/Games/current.json", "w") as _current:
             currentFile = json.dumps(current, indent=4, ensure_ascii=False) # Convert the object to json
@@ -289,6 +293,7 @@ def endAction(grid, score, issue, issueAuthor, issueText):
 
         # Change the actions
         readme =  open("README.md", "r")
+        readme =readme.read()
         readme = readme.split("<!-- 2048GameActions -->", 2)
 
         readme[1] = "<a  href=\"https://github.com/Darkempire78/readme-2048/issues/new?title=2048|newGame&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.\"><img src=\"Assets/newGame.png\"/></a>"
