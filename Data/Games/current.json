@@ -1,27 +1,27 @@
 {
     "grid": [
         [
-            null,
-            null,
-            null,
-            null
+            2,
+            4,
+            8,
+            16
         ],
         [
-            null,
-            null,
-            null,
-            2
+            32,
+            64,
+            128,
+            256
         ],
         [
-            null,
-            null,
-            null,
-            null
+            2,
+            4,
+            8,
+            16
         ],
         [
-            null,
-            null,
-            null,
+            32,
+            64,
+            128,
             null
         ]
     ],
