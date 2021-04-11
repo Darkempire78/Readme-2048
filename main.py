@@ -54,6 +54,7 @@ def newGame(issue, issueAuthor):
 
     # Change the actions
     readme =  open("README.md", "r")
+    readme = readme.read()
     readme = readme.split("<!-- 2048GameActions -->", 2)
 
     readme[1] = "<a href=\"https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideUp&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.\"> <img src=\"Assets/slideUp.png\"/> </a> <a href=\"https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideDown&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.\"> <img src=\"Assets/slideDown.png\"/> </a> <a href=\"https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideLeft&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.\"> <img src=\"Assets/slideLeft.png\"/> </a> <a href=\"https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideRight&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.\"> <img src=\"Assets/slideRight.png\"/> </a>"
@@ -88,7 +89,7 @@ def newGame(issue, issueAuthor):
 
     # End
     issueText = "New game created!"
-    endAction(grid, 0, issue, issueAuthor, issueText)
+    endAction(grid, 0, issue, issueAuthor, issueText, True)
 
 # Slide
 
@@ -119,7 +120,7 @@ def slideLeft(issue, issueAuthor):
                 lastCase = grid[line][case]
                 
     issueText = "You slided left!"
-    endAction(grid, score, issue, issueAuthor, issueText)
+    endAction(grid, score, issue, issueAuthor, issueText, False)
 
 def slideRight(issue, issueAuthor):
     """Slide right the grid"""
@@ -148,7 +149,7 @@ def slideRight(issue, issueAuthor):
                 lastCase = grid[line][case]
                 
     issueText = "You slided right!"
-    endAction(grid, score, issue, issueAuthor, issueText)
+    endAction(grid, score, issue, issueAuthor, issueText, False)
 
 
 def slideUp(issue, issueAuthor):
@@ -178,7 +179,7 @@ def slideUp(issue, issueAuthor):
                 lastCase = grid[line][case]
                 
     issueText = "You slided up!"
-    endAction(grid, score, issue, issueAuthor, issueText)
+    endAction(grid, score, issue, issueAuthor, issueText, False)
 
 def slideDown(issue, issueAuthor):
     """Slide down the grid"""
@@ -207,7 +208,7 @@ def slideDown(issue, issueAuthor):
                 lastCase = grid[line][case]
                 
     issueText = "You slided down!"
-    endAction(grid, score, issue, issueAuthor, issueText)
+    endAction(grid, score, issue, issueAuthor, issueText, False)
 
 # Utils
 
@@ -241,7 +242,7 @@ def addRandomNumber(grid):
 
 # End
 
-def endAction(grid, score, issue, issueAuthor, issueText):
+def endAction(grid, score, issue, issueAuthor, issueText, isNewGame):
     """End the bot action"""
 
     # Read current.json
@@ -261,7 +262,8 @@ def endAction(grid, score, issue, issueAuthor, issueText):
     # Check if the game is ended
     if any(None in line for line in grid):     
         # Add a number in the grid
-        addRandomNumber(grid)
+        if not isNewGame:
+            addRandomNumber(grid)
         # Generate the new game board
         generateGameBoard(grid, current["score"], current["bestScore"])
         
