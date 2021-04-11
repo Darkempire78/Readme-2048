@@ -46,6 +46,12 @@ class createNewCurrentFile:
 def newGame(issue, issueAuthor):
     """Create a new 2048 game"""
     
+    if checkNextActions(getGrid()):
+        # Reply and close the issue
+        issue.create_comment(f"{issueAuthor} The game is not ended!")
+        issue.edit(state='closed')
+        return
+
     # Set the best score
     bestScoreFile =  open("Data/bestScore.txt", "r")
     bestScore = int(bestScoreFile.read())
@@ -249,11 +255,38 @@ def addRandomNumber(grid):
     else:
         print("You lost!")
 
-# def checkNextActions(grid):
+def checkNextActions(grid):
+    """
+    return True : if there is one/+ possible action 
+    return False : if there is no possible action
+    """
+    if any(None in line for line in grid): 
+        return True
 
-#     # Check
-#     for line in range(4):
-        
+    # Check lines
+    lastCase = False
+    for line in range(4):
+        for case in range(4):
+
+            if case == 0:
+                pass
+            elif lastCase == grid[line][case]:
+                return True
+            lastCase = grid[line][case]
+    
+    # Check columns
+    lastCase = False
+    for case in range(4):
+        for column in range(4):
+
+            if case == 0:
+                pass
+            elif lastCase == grid[column][case]:
+                return True
+            lastCase = grid[column][case]
+    
+    return False
+   
 
 # End
 
@@ -275,7 +308,7 @@ def endAction(grid, score, issue, issueAuthor, issueText, isNewGame):
         current["grid"] = grid
 
     # Check if the game is ended
-    if any(None in line for line in grid):     
+    if not checkNextActions(grid):
         # Add a number in the grid
         if not isNewGame:
             addRandomNumber(grid)
