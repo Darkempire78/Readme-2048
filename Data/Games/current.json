@@ -1,27 +1,26 @@
-{
     "grid": [
         [
-            null,
-            null,
-            null,
-            null
-        ],
-        [
-            null,
-            null,
-            null,
-            null
-        ],
-        [
-            null,
             2,
-            null,
-            null
+            4,
+            8,
+            16
         ],
         [
-            null,
-            null,
-            null,
+            32,
+            64,
+            128,
+            256
+        ],
+        [
+            2,
+            4,
+            8,
+            16
+        ],
+        [
+            32,
+            64,
+            128,
             null
         ]
     ],
