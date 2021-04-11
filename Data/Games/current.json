@@ -2,26 +2,26 @@
     "grid": [
         [
             2,
+            4,
+            8,
+            16
+        ],
+        [
+            32,
+            64,
+            128,
+            256
+        ],
+        [
             2,
-            2,
-            null
+            4,
+            8,
+            16
         ],
         [
-            null,
-            null,
-            null,
-            null
-        ],
-        [
-            null,
-            null,
-            null,
-            null
-        ],
-        [
-            null,
-            null,
-            null,
+            32,
+            64,
+            128,
             null
         ]
     ],
