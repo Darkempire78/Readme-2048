@@ -12,7 +12,7 @@
 - [ ] Remove impossible actions
 - [ ] Do not download Pillow each time 
 - [ ] Ranking of the number of actions played
-- [ ] Prevent from runing twice actions at the same time (https://github.community/t/wait-a-workflow-to-finish-before-running-another-workflow/17095/2)
+- [ ] Prevent from runing twice actions at the same time (https://github.com/marketplace/actions/wait-for-check)
 
 ## Contributing
 
