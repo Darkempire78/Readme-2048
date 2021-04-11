@@ -52,6 +52,18 @@ def newGame(issue, issueAuthor):
     except:
         pass
 
+    # Change the actions
+    readme =  open("README.md", "r")
+    readme = readme.split("<!-- 2048GameActions -->", 2)
+
+    readme[1] = """<img src=\"Assets/slideUp.png\" href=\"https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideUp&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.\"/>
+<img src=\"Assets/slideDown.png\" href=\"https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideDown&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.\"/>
+<img src=\"Assets/slideLeft.png\" href=\"https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideLeft&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.\"/>
+<img src=\"Assets/slideRight.png\" href=\"https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideRight&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.\"/>"""
+
+    with open("README.md", "w") as _readme:
+        _readme.write("<!-- 2048GameActions -->".join(readme))
+
     grid = [
             [None, None, None, None], 
             [None, None, None, None], 
@@ -231,6 +243,7 @@ def addRandomNumber(grid):
         
 
 # End
+
 def endAction(grid, score, issue, issueAuthor, issueText):
     """End the bot action"""
 
@@ -276,6 +289,16 @@ def endAction(grid, score, issue, issueAuthor, issueText):
 
         # Generate end gameboard
         generateEndGameBoard(grid, current["score"], current["bestScore"])
+
+        # Change the actions
+        readme =  open("README.md", "r")
+        readme = readme.split("<!-- 2048GameActions -->", 2)
+
+        readme[1] = "<img src=\"Assets/newGame.png\" href=\"https://github.com/Darkempire78/readme-2048/issues/new?title=2048|newGame&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.\"/>"
+
+        with open("README.md", "w") as _readme:
+            _readme.write("<!-- 2048GameActions -->".join(readme))
+
 
 
 if __name__ == "__main__":
