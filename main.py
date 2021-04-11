@@ -23,11 +23,12 @@ def main():
     currentFile = open("Data/Games/current.json", "r")
     current = json.load(currentFile)
     currentFile.close()
-    if current["moves"][-1] == issueAuthor:
-        # Reply and close the issue
-        issue.create_comment(f"{issueAuthor} You cannot play two times in a row!")
-        issue.edit(state='closed')
-        return
+    if len(current["moves"]) > 0:
+        if current["moves"][-1] == issueAuthor:
+            # Reply and close the issue
+            issue.create_comment(f"{issueAuthor} You cannot play two times in a row!")
+            issue.edit(state='closed')
+            return
 
     if issueType == "newgame":
         newGame(issue, issueAuthor)
