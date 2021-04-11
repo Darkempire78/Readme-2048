@@ -1,28 +1,28 @@
 {
     "grid": [
         [
+            null,
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null,
+            null
+        ],
+        [
+            null,
             2,
-            4,
-            8,
-            2
+            null,
+            null
         ],
         [
-            32,
-            64,
-            128,
-            16
-        ],
-        [
-            2,
-            4,
-            8,
-            256
-        ],
-        [
-            32,
-            64,
-            128,
-            16
+            null,
+            null,
+            null,
+            null
         ]
     ],
     "score": 0,
