@@ -320,9 +320,6 @@ def endAction(grid, score, issue, issueAuthor, issueText, isNewGame):
             currentFile = json.dumps(current, indent=4, ensure_ascii=False) # Convert the object to json
             _current.write(currentFile)
 
-        # Check next actions (what action we can do)
-        # checkNextActions(grid)
-
         # Reply and close the issue
         issue.create_comment(f"{issueAuthor} {issueText}")
         issue.edit(state='closed')
