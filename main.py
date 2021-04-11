@@ -357,6 +357,11 @@ def endAction(grid, score, issue, issueAuthor, issueText, isNewGame):
         with open("README.md", "w") as _readme:
             _readme.write("<!-- 2048GameActions -->".join(readme))
 
+        # Reply and close the issue
+        players = list(set(current["moves"])) # Remove duplicates
+        issue.create_comment(f"The game is over, well done! {players}")
+        issue.edit(state='closed')
+
 
 
 if __name__ == "__main__":
