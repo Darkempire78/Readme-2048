@@ -14,7 +14,7 @@ This template repository contains the source code for a Python 2048 automatic bo
 
 3. Rename the folder `.github/_workflows` to `.github/workflows`.
 
-4. Delete this README file and make your own `README.md` based on the `README.template.md`. Do not forget that the both comments `"<-- 2048GameActions -->"` and `"<-- 2048Ranking -->"` connot be deleted!
+4. Delete this README file and make your own `README.md` based on the `README.template.md`. Do not forget that the both comments `"<-- 2048GameActions -->"` and `"<-- 2048Ranking -->"` cannot be deleted!
 
 ## Features
 
