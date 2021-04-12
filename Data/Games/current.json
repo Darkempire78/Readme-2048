@@ -3,30 +3,31 @@
         [
             null,
             null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
             8,
+            null
+        ],
+        [
+            2,
+            2,
+            2,
             4
-        ],
-        [
-            null,
-            null,
-            2,
-            null
-        ],
-        [
-            null,
-            2,
-            null,
-            null
-        ],
-        [
-            null,
-            null,
-            null,
-            null
         ]
     ],
     "score": 20,
     "bestScore": 0,
     "moves": [
+        "@Darkempire78"
     ]
 }
