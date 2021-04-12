@@ -11,7 +11,7 @@
 <!-- 2048Ranking -->
 | Players | Actions |
 |---------------|---------|
-| @Darkempire78 | 1 |
+| [@Darkempire78](https://github.com/Darkempire78) | 2 |
 <!-- 2048Ranking -->
 
 ## To do
