@@ -324,7 +324,7 @@ def updateRanking(issueAuthor):
 
     readme[1] = "\n| Players | Actions |\n|---------------|---------|\n"
     for players in ranking[:10]:
-        readme[1] += f"| {players[0]} | {players[1]} |\n"
+        readme[1] += f"| [{players[0]}](https://github.com/{players[0][1:]}) | {players[1]} |\n"
 
     with open("README.md", "w", encoding="utf-8") as _readme:
         _readme.write("<!-- 2048Ranking -->".join(readme))
