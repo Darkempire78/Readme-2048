@@ -164,7 +164,7 @@ def slideRight(issue, issueAuthor):
 
     while changes:
         changes = False
-        for line in range(3,-1, -1):
+        for line in range(4):
             for case in range(3,-1, -1):
 
                 if (lastCase is None) and (grid[line][case]) and (case != 3):
@@ -223,7 +223,7 @@ def slideDown(issue, issueAuthor):
 
     while changes:
         changes = False
-        for case in range(3, -1, -1):
+        for case in range(4):
             for line in range(3, -1, -1):
 
                 if (lastCase is None) and (grid[line][case]) and (line != 3):
