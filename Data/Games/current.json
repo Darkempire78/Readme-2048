@@ -4,7 +4,7 @@
             null,
             null,
             8,
-            2
+            4
         ],
         [
             null,
@@ -14,7 +14,7 @@
         ],
         [
             null,
-            null,
+            2,
             null,
             null
         ],
@@ -22,11 +22,12 @@
             null,
             null,
             null,
-            2
+            null
         ]
     ],
-    "score": 16,
+    "score": 20,
     "bestScore": 0,
     "moves": [
+        "@Darkempire78"
     ]
 }
