@@ -322,7 +322,7 @@ def updateRanking(issueAuthor):
     topMovesRead = topMovesRead["topMoves"]
     ranking = sorted(topMovesRead.items(), key=lambda t: t[1], reverse=True)
 
-    readme[1] = "\n| Players | Actions |\n|---------------|---------|\n"
+    readme[1] = "\n| Players | Actions |\n|---------------|:---------:|\n"
     for players in ranking[:10]:
         readme[1] += f"| [{players[0]}](https://github.com/{players[0][1:]}) | {players[1]} |\n"
 
