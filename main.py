@@ -20,7 +20,7 @@ def main():
     issueType = issueArguments[1]
 
     # Prevent from playing twice in a row
-    currentFile = open("Data/Games/current.json", "r")
+    currentFile = open("Data/Games/current.json", "r", encoding="utf-8")
     current = json.load(currentFile)
     currentFile.close()
     if len(current["moves"]) > 0:
@@ -64,16 +64,16 @@ def newGame(issue, issueAuthor):
         return
 
     # Set the best score
-    bestScoreFile =  open("Data/bestScore.txt", "r")
+    bestScoreFile =  open("Data/bestScore.txt", "r", encoding="utf-8")
     bestScore = int(bestScoreFile.read())
     bestScoreFile.close()
 
-    currentFile = open("Data/Games/current.json", "r")
+    currentFile = open("Data/Games/current.json", "r", encoding="utf-8")
     current = json.load(currentFile)
     currentFile.close()
 
     if bestScore < current["score"]:
-        with open("Data/bestScore.txt", "w") as _bestScoreFile:
+        with open("Data/bestScore.txt", "w", encoding="utf-8") as _bestScoreFile:
             _bestScoreFile.write(str(current["score"]))
 
     # Archive the former game    
@@ -85,13 +85,13 @@ def newGame(issue, issueAuthor):
     
 
     # Change the actions
-    readme =  open("README.md", "r")
+    readme =  open("README.md", "r", encoding="utf-8")
     readme = readme.read()
     readme = readme.split("<!-- 2048GameActions -->", 2)
 
     readme[1] = "<a href=\"https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideUp&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.\"> <img src=\"Assets/slideUp.png\"/> </a> <a href=\"https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideDown&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.\"> <img src=\"Assets/slideDown.png\"/> </a> <a href=\"https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideLeft&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.\"> <img src=\"Assets/slideLeft.png\"/> </a> <a href=\"https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideRight&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else.\"> <img src=\"Assets/slideRight.png\"/> </a>"
 
-    with open("README.md", "w") as _readme:
+    with open("README.md", "w", encoding="utf-8") as _readme:
         _readme.write("<!-- 2048GameActions -->".join(readme))
 
     grid = [
@@ -108,13 +108,13 @@ def newGame(issue, issueAuthor):
 
     # Read the bestScore
     bestScore = 0
-    with open("Data/bestScore.txt", "r") as _bestScore:
+    with open("Data/bestScore.txt", "r", encoding="utf-8") as _bestScore:
         bestScore = int(_bestScore.read())
 
     # Write the current file
     currentFile = createNewCurrentFile(grid, bestScore, [])
 
-    with open("Data/Games/current.json", "w") as _current:
+    with open("Data/Games/current.json", "w", encoding="utf-8") as _current:
         print(currentFile.__dict__)
         currentFile = json.dumps(currentFile.__dict__, indent=4, ensure_ascii=False) # Convert the object to json
         _current.write(currentFile)
@@ -245,7 +245,7 @@ def slideDown(issue, issueAuthor):
 # Utils
 
 def getGrid():
-    with open("Data/Games/current.json", "r") as _grid:
+    with open("Data/Games/current.json", "r", encoding="utf-8") as _grid:
         grid = json.load(_grid)
     return grid["grid"]
 
@@ -297,7 +297,37 @@ def checkNextActions(grid):
             lastCase = grid[column][case]
     
     return False
-   
+
+def updateRanking(issueAuthor):
+    # Increase the player ranking
+    with open("Data/topMoves.json", "r", encoding="utf-8") as _topMovesRead:
+        topMovesRead = json.load(_topMovesRead)
+        
+        if issueAuthor in topMovesRead["topMoves"]:
+            topMovesRead["topMoves"][f"{issueAuthor}"] += 1
+        else:
+            topMovesRead["topMoves"][f"{issueAuthor}"] = 1
+    
+    with open("Data/topMoves.json", "w", encoding="utf-8") as _topMovesWrite:
+        topMovesRead2 = json.dumps(topMovesRead, indent=4, ensure_ascii=False) # Convert the object to json
+        _topMovesWrite.write(topMovesRead2)
+
+    # Update the ranking (makdown)
+    # Change the actions
+    readme =  open("README.md", "r", encoding="utf-8")
+    readme = readme.read()
+    readme = readme.split("<!-- 2048Ranking -->", 2)
+
+    # Sort the ranking
+    topMovesRead = topMovesRead["topMoves"]
+    ranking = sorted(topMovesRead.items(), key=lambda t: t[1], reverse=True)
+
+    readme[1] = "\n| Players | Actions |\n|---------------|---------|\n"
+    for players in ranking[:10]:
+        readme[1] += f"| {players[0]} | {players[1]} |\n"
+
+    with open("README.md", "w", encoding="utf-8") as _readme:
+        _readme.write("<!-- 2048Ranking -->".join(readme))
 
 # End
 
@@ -334,19 +364,7 @@ def endAction(grid, score, issue, issueAuthor, issueText, isNewGame):
             currentFile = json.dumps(current, indent=4, ensure_ascii=False) # Convert the object to json
             _current.write(currentFile)
 
-        # Increase the player ranking
-        with open("Data/topMoves.json", "r") as _topMovesRead:
-            topMovesRead = json.load(_topMovesRead)
-            
-            if issueAuthor in topMovesRead["topMoves"]:
-                topMovesRead["topMoves"][f"{issueAuthor}"] += 1
-            else:
-                topMovesRead["topMoves"][f"{issueAuthor}"] = 1
-       
-        with open("Data/topMoves.json", "w") as _topMovesWrite:
-            topMovesRead = json.dumps(topMovesRead, indent=4, ensure_ascii=False) # Convert the object to json
-            _topMovesWrite.write(topMovesRead)
-
+        updateRanking(issueAuthor)
 
         # Reply and close the issue
         issue.create_comment(f"{issueAuthor} {issueText}\n\nAsk a friend to do the next action: [Share on Twitter...](https://twitter.com/intent/tweet?text=I%27m%20playing%202048%20on%20a%20GitHub%20Profile%20Readme!%20I%20just%20played.%20You%20have%20the%20action%20at%20https%3A%2F%2Fgithub.com%2FDarkempire78%2FDarkempire78)")
@@ -372,6 +390,8 @@ def endAction(grid, score, issue, issueAuthor, issueText, isNewGame):
         with open("README.md", "w") as _readme:
             _readme.write("<!-- 2048GameActions -->".join(readme))
 
+        updateRanking(issueAuthor)
+
         # Reply and close the issue
         players = list(set(current["moves"])) # Remove duplicates
         issue.create_comment(f"The game is over, well done! {players}")
@@ -380,4 +400,4 @@ def endAction(grid, score, issue, issueAuthor, issueText, isNewGame):
 
 
 if __name__ == "__main__":
-	main()
+	updateRanking("étesté")
