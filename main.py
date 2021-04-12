@@ -400,4 +400,4 @@ def endAction(grid, score, issue, issueAuthor, issueText, isNewGame):
 
 
 if __name__ == "__main__":
-	updateRanking("étesté")
+	main()
