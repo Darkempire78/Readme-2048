@@ -334,6 +334,20 @@ def endAction(grid, score, issue, issueAuthor, issueText, isNewGame):
             currentFile = json.dumps(current, indent=4, ensure_ascii=False) # Convert the object to json
             _current.write(currentFile)
 
+        # Increase the player ranking
+        with open("Data/topMoves.json", "r") as _topMovesRead:
+            topMovesRead = json.load(_topMovesRead)
+            
+            if issueAuthor in topMovesRead["topMoves"]:
+                topMovesRead["topMoves"][f"{issueAuthor}"] += 1
+            else:
+                topMovesRead["topMoves"][f"{issueAuthor}"] = 1
+       
+        with open("Data/topMoves.json", "w") as _topMovesWrite:
+            topMovesRead = json.dumps(topMovesRead, indent=4, ensure_ascii=False) # Convert the object to json
+            _topMovesWrite.write(topMovesRead)
+
+
         # Reply and close the issue
         issue.create_comment(f"{issueAuthor} {issueText}\n\nAsk a friend to do the next action: [Share on Twitter...](https://twitter.com/intent/tweet?text=I%27m%20playing%202048%20on%20a%20GitHub%20Profile%20Readme!%20I%20just%20played.%20You%20have%20the%20action%20at%20https%3A%2F%2Fgithub.com%2FDarkempire78%2FDarkempire78)")
         issue.edit(state='closed', labels=["done"])
