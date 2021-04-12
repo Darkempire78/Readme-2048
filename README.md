@@ -2,21 +2,23 @@
 
 #  Readme 2048
 
-<!-- 2048GameBoard -->
-<img src="https://github.com/Darkempire78/readme-2048/blob/main/Data/gameboard.png" width="500"/>
-<!-- 2048GameBoard -->
+This template repository contains the source code for a Python 2048 automatic bot, together with GitHub Workflows in order to allow ANYONE to play 2048 from a README file. Want to see this in action? Go to my profile page and feel free to try it out by yourself!
 
-<!-- 2048GameActions -->
-<a href="https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideUp&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else."> <img src="Assets/slideUp.png"/> </a> <a href="https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideDown&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else."> <img src="Assets/slideDown.png"/> </a> <a href="https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideLeft&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else."> <img src="Assets/slideLeft.png"/> </a> <a href="https://github.com/Darkempire78/readme-2048/issues/new?title=2048|slideRight&body=Just+push+'Submit+new+issue'.+You+don't+need+to+do+anything+else."> <img src="Assets/slideRight.png"/> </a>
-<!-- 2048GameActions -->
+<img src="https://github.com/Darkempire78/readme-2048/blob/main/Capture1.PNG" width="500"/>
 
-## Ranking
+## Steps to make your own repo
 
-<!-- 2048Ranking -->
-| Players | Actions |
-|---------------|---------|
-| [@Darkempire78](https://github.com/Darkempire78) | 4 |
-<!-- 2048Ranking -->
+1. Click on `"Use this template"`.
+
+2. Replace the the link (`https://github.com/Darkempire78/Readme-2048`) to the link of your own repository in each files.
+
+3. Rename the folder `.github/_workflows` to `.github/workflows`.
+
+4. Delete this README file and make your own `README.md` based on the `README.template`. Do not forget that the both comments `"<-- 2048GameActions -->"` and `"<-- 2048Ranking -->"` connot be deleted!
+
+## Archives
+
+The current game is always called `Data/Games/current.json`. All games are automatically archived into the `Data/Games/` folder.
 
 ## To do
 - [ ] Remove impossible actions

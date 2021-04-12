@@ -15,19 +15,18 @@
         [
             null,
             null,
-            8,
+            2,
             null
         ],
         [
             2,
-            2,
-            2,
-            4
+            null,
+            null,
+            null
         ]
     ],
-    "score": 20,
+    "score": 0,
     "bestScore": 0,
     "moves": [
-        "@Darkempire78"
     ]
 }
