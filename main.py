@@ -43,7 +43,6 @@ def main():
     else:
         # Reply and close the issue
         issue.create_comment(f"{issueAuthor} This action does not exist!")
-        issue.add_to_labels("invalid")
         issue.edit(state='closed', labels=["invalid"])
 
 class createNewCurrentFile:
