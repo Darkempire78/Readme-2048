@@ -27,7 +27,7 @@ def main():
         if current["moves"][-1] == issueAuthor:
             # Reply and close the issue
             issue.create_comment(f"{issueAuthor} You cannot play two times in a row!")
-            issue.edit(state='closed')
+            issue.edit(state='closed', labels=["invalid"])
             return
 
     if issueType == "newgame":
@@ -60,7 +60,7 @@ def newGame(issue, issueAuthor):
     if checkNextActions(getGrid()):
         # Reply and close the issue
         issue.create_comment(f"{issueAuthor} The game is not ended!")
-        issue.edit(state='closed')
+        issue.edit(state='closed', labels=["invalid"])
         return
 
     # Set the best score
@@ -336,7 +336,7 @@ def endAction(grid, score, issue, issueAuthor, issueText, isNewGame):
 
         # Reply and close the issue
         issue.create_comment(f"{issueAuthor} {issueText}\n\nAsk a friend to do the next action: [Share on Twitter...](https://twitter.com/intent/tweet?text=I%27m%20playing%202048%20on%20a%20GitHub%20Profile%20Readme!%20I%20just%20played.%20You%20have%20the%20action%20at%20https%3A%2F%2Fgithub.com%2FDarkempire78%2FDarkempire78)")
-        issue.edit(state='closed')
+        issue.edit(state='closed', labels=["done"])
 
     # Game ended
     else:
@@ -361,7 +361,7 @@ def endAction(grid, score, issue, issueAuthor, issueText, isNewGame):
         # Reply and close the issue
         players = list(set(current["moves"])) # Remove duplicates
         issue.create_comment(f"The game is over, well done! {players}")
-        issue.edit(state='closed')
+        issue.edit(state='closed', labels=["done"])
 
 
 
