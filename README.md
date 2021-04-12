@@ -11,7 +11,7 @@
 <!-- 2048Ranking -->
 | Players | Actions |
 |---------------|---------|
-| étesté | 1 |
+| @Darkempire78 | 1 |
 <!-- 2048Ranking -->
 
 ## To do
