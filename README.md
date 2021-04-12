@@ -2,6 +2,10 @@
 
 #  Readme 2048
 
+**Game in progress. This is a public game of 2048. Anyone can play.**
+
+**It's your turn, click on a button below the board!**
+
 <!-- 2048GameBoard -->
 <img src="https://github.com/Darkempire78/readme-2048/blob/main/Data/gameboard.png" width="500"/>
 <!-- 2048GameBoard -->
