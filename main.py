@@ -172,7 +172,7 @@ def slideRight(issue, issueAuthor):
                     grid[line][case] = None
                     changes = True
 
-                elif (lastCase) and (grid[line][case]) and (lastCase == grid[line][case]):
+                elif (lastCase) and (grid[line][case]) and (lastCase == grid[line][case]) and (case != 3):
                     score += grid[line][case] * 2
                     grid[line][case+1] = grid[line][case] * 2
                     grid[line][case] = None
@@ -182,7 +182,6 @@ def slideRight(issue, issueAuthor):
                 
     issueText = "You slided right!"
     endAction(grid, score, issue, issueAuthor, issueText, False)
-
 
 def slideUp(issue, issueAuthor):
     """Slide up the grid"""
