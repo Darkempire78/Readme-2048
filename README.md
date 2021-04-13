@@ -31,6 +31,12 @@ The current game is always called `Data/Games/current.json`. All games are autom
 - [ ] Do not download Pillow each time 
 - [ ] Prevent from runing twice actions at the same time (https://github.com/marketplace/actions/wait-for-check)
 
+## Discord
+
+Join the Discord server !
+
+[![](https://i.imgur.com/UfyvtOL.png)](https://discord.gg/sPvJmY7mcV)
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
