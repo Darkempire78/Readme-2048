@@ -1,4 +1,4 @@
-<!-- ![](https://img.shields.io/codefactor/grade/github/Darkempire78/Github1s-Extension?style=for-the-badge) ![](https://img.shields.io/github/repo-size/Darkempire78/Github1s-Extension?style=for-the-badge) -->
+<!-- ![](https://img.shields.io/codefactor/grade/github/Darkempire78/Github1s-Extension?style=for-the-badge) ![](https://img.shields.io/github/repo-size/Darkempire78/Github1s-Extension?style=for-the-badge) --> <a href="https://discord.com/invite/sPvJmY7mcV"><img src="https://img.shields.io/discord/831524351311609907?color=%237289DA&label=DISCORD&style=for-the-badge"></a>
 
 #  Readme 2048
 
@@ -35,6 +35,12 @@ The current game is always called `Data/Games/current.json`. All games are autom
 - [ ] Remove impossible actions
 - [ ] Do not download Pillow each time 
 - [ ] Prevent from runing twice actions at the same time (https://github.com/marketplace/actions/wait-for-check)
+
+## Discord
+
+Join the Discord server !
+
+[![](https://i.imgur.com/UfyvtOL.png)](https://discord.gg/sPvJmY7mcV)
 
 ## Contributing
 
