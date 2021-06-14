@@ -1,8 +1,14 @@
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
+import json
 
 def generateGameBoard(grid, score, bestScore):   
     
-    gameboard = Image.open("Assets/background.png").convert('RGBA')
+    with open("config.json", mode="r", encoding="utf8") as config:
+        isDarkTheme = json.loads(config.read())
+        if isDarkTheme["theme"] == "dark":
+            gameboard = Image.open("Assets/backgroundDark.png").convert('RGBA')
+        else:
+            gameboard = Image.open("Assets/background.png").convert('RGBA')
     
     # Add numbers
     for line in range(4):
@@ -62,4 +68,4 @@ def gridToCoordinates(line, case):
         [(58, 1023), (300, 1023), (544, 1023), (786, 1023)]
     ]
 
-    return coordinates[line][case]   
+    return coordinates[line][case]

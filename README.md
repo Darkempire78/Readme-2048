@@ -16,11 +16,16 @@ This template repository contains the source code for a Python 2048 automatic bo
 
 4. Delete this README file and make your own `README.md` based on the `README.template.md`. Do not forget that the both comments `"<-- 2048GameActions -->"` and `"<-- 2048Ranking -->"` cannot be deleted!
 
+## Themes
+You can change the theme of the gameboard between dark and light mode editing `config.json`.
+
 ## Features
 
 * Play to 2048
 * Archive games
 * Leaderboard
+* Dark mode
+
 
 ## Archives
 
